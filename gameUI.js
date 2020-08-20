@@ -16,6 +16,9 @@ function playRound(playerSelection, computerSelection) {
 
     // Determine result of matchup
     if (player === computer) {
+        displayMessage = 'It\s a tie!';
+        scoreText.textContent = displayMessage;
+        messageDisplay.appendChild(scoreText);
         return;
     } else if (player === 'rock') {
         switch(computer) {
@@ -39,9 +42,17 @@ function playRound(playerSelection, computerSelection) {
                 computerScore++;
         }
     }
+    displayMessage = `The score is:\nPlayer: ${playerScore}\nComputer: ${computerScore}`;
+    scoreText.textContent = displayMessage;
+    messageDisplay.appendChild(scoreText);
 }
 let playerScore = 0;
 let computerScore = 0;
+let displayMessage;
+
+const rockButton = document.querySelector('#rockButton');
+const paperButton = document.querySelector('#paperButton');
+const scissorsButton = document.querySelector('#scissorsButton');
 
 let buttons = document.querySelectorAll('button');
 buttons.forEach((btn) => {
@@ -53,15 +64,14 @@ buttons.forEach((btn) => {
 
 // let lossMessage = `You lose, ${computerSelection} beats `;
 // let winMessage = `You win!  beats ${computerSelection}`;
-// let displayMesage;
 
-// let messageDisplay = document.createElement('div');
-// let scoreText = document.createElement('p');
-// scoreText.textContent = `Score:\nPlayer: ${playerScore}\nComputer: ${computerScore}`;
+let messageDisplay = document.createElement('div');
+let scoreText = document.createElement('p');
+
 // let roundText = document.createElement('p');
 // roundText.textContent = displayMessage;
-// messageDisplay.appendChild(scoreText);
-// messageDisplay.appendChild(roundText);
-// document.body.appendChild(messageDisplay);
 
-console.log(`The final score was:\nPlayer: ${playerScore}\nComputer: ${computerScore}`);
+// messageDisplay.appendChild(roundText);
+document.body.appendChild(messageDisplay);
+
+// console.log(`The final score was:\nPlayer: ${playerScore}\nComputer: ${computerScore}`);
